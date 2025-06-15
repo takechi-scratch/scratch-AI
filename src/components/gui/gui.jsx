@@ -30,6 +30,7 @@ import Alerts from '../../containers/alerts.jsx';
 import DragLayer from '../../containers/drag-layer.jsx';
 import ConnectionModal from '../../containers/connection-modal.jsx';
 import TelemetryModal from '../telemetry-modal/telemetry-modal.jsx';
+import ChatTab from '../chat-tab';
 
 import layout, {STAGE_SIZE_MODES} from '../../lib/layout-constants';
 import {resolveStageSize} from '../../lib/screen-utils';
@@ -354,7 +355,6 @@ const GUIComponent = props => {
                                 <Backpack host={backpackHost} />
                             ) : null}
                         </Box>
-
                         <Box className={classNames(styles.stageAndTargetWrapper, styles[stageSize])}>
                             <StageWrapper
                                 isFullScreen={isFullScreen}
@@ -370,6 +370,7 @@ const GUIComponent = props => {
                                 />
                             </Box>
                         </Box>
+                        <ChatTab userName={authorUsername || 'User'} />
                     </Box>
                 </Box>
                 <DragLayer />

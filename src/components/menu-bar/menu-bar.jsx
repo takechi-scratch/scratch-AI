@@ -28,6 +28,7 @@ import DeletionRestorer from '../../containers/deletion-restorer.jsx';
 import TurboMode from '../../containers/turbo-mode.jsx';
 import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
 import SettingsMenu from './settings-menu.jsx';
+import {toggleChatTab} from '../../reducers/chat-tab';
 
 import {openTipsLibrary, openDebugModal} from '../../reducers/modals';
 import {setPlayer} from '../../reducers/mode';
@@ -658,8 +659,7 @@ class MenuBar extends React.Component {
                                         )
                                     }
                                 </ProjectWatcher>
-                            )
-                        ) : (
+                            )) : (
                             this.props.showComingSoon ? (
                                 <MenuBarItemTooltip id="share-button">
                                     <ShareButton className={styles.menuBarButton} />
@@ -854,7 +854,15 @@ class MenuBar extends React.Component {
                         </React.Fragment>
                     )}
                 </div>
-
+                <div className={styles.menuBarItem}>
+                    <button
+                        className={styles.menuBarTextButton}
+                        onClick={this.props.onToggleChatTab}
+                        type="button"
+                    >
+                        {this.props.chatTabVisible ? 'チャットを隠す' : 'チャットを表示'}
+                    </button>
+                </div>
                 {aboutButton}
             </Box>
         );
@@ -936,6 +944,7 @@ MenuBar.propTypes = {
     onShare: PropTypes.func,
     onStartSelectingFileUpload: PropTypes.func,
     onToggleLoginOpen: PropTypes.func,
+    onToggleChatTab: PropTypes.func,
     projectTitle: PropTypes.string,
     renderLogin: PropTypes.func,
     sessionExists: PropTypes.bool,
@@ -944,7 +953,8 @@ MenuBar.propTypes = {
     showComingSoon: PropTypes.bool,
     username: PropTypes.string,
     userOwnsProject: PropTypes.bool,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
+    chatTabVisible: PropTypes.bool
 };
 
 MenuBar.defaultProps = {
@@ -978,7 +988,8 @@ const mapStateToProps = (state, ownProps) => {
         mode1920: isTimeTravel1920(state),
         mode1990: isTimeTravel1990(state),
         mode2020: isTimeTravel2020(state),
-        modeNow: isTimeTravelNow(state)
+        modeNow: isTimeTravelNow(state),
+        chatTabVisible: state.scratchGui.chatTab.visible
     };
 };
 
@@ -1005,14 +1016,15 @@ const mapDispatchToProps = dispatch => ({
     onClickSave: () => dispatch(manualUpdateProject()),
     onClickSaveAsCopy: () => dispatch(saveProjectAsCopy()),
     onSeeCommunity: () => dispatch(setPlayer(true)),
-    onSetTimeTravelMode: mode => dispatch(setTimeTravel(mode))
+    onSetTimeTravelMode: mode => dispatch(setTimeTravel(mode)),
+    onToggleChatTab: () => dispatch(toggleChatTab())
 });
 
 export default compose(
-    injectIntl,
-    MenuBarHOC,
     connect(
         mapStateToProps,
         mapDispatchToProps
-    )
+    ),
+    injectIntl,
+    MenuBarHOC
 )(MenuBar);

@@ -7,28 +7,13 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-
-    /*
-        For most things, we shouldn't explicitly set height, and let the
-        content push the element to whatever fits. Using a fixed height
-        instead, will help us subtract the value we assign from the body,
-        adding up to a perfect 100%. This means we don't need to set
-        overflow: hidden, which makes it hard to debug. border-box
-        simplifies by all of this by removing padding from the equation.
-    */
     box-sizing: border-box;
-    height: $menu-bar-height;
-
-    /*
-        @todo: This adds ~20px in Chrome, when scrolling to the right,
-        but fixes [FFx + Safari] [resize window down + scroll to the right] bug.
-        width: 100%;
-    */
+    height: 3rem; /* $menu-bar-height */
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: $menu-bar-standard-font-size;
+    font-size: 0.75rem; /* $menu-bar-standard-font-size */
     font-weight: bold;
-    background-color: $looks-secondary;
-    color: $ui-white;
+    background-color: #855CD6; /* $looks-secondary */
+    color: #fff; /* $ui-white */
 }
 
 .main-menu {
@@ -55,13 +40,13 @@
     display: flex;
     padding: 0 0.25rem;
     text-decoration: none;
-    color: $ui-white;
+    color: #fff; /* $ui-white */
     user-select: none;
     align-self: center;
     position: relative;
     align-items: center;
     white-space: nowrap;
-    height: $menu-bar-height;
+    height: 3rem; /* $menu-bar-height */
 }
 
 .menu-bar-item.hoverable {
@@ -70,11 +55,11 @@
 
 .menu-bar-item.active,
 .menu-bar-item.hoverable:hover {
-    background-color: $ui-black-transparent;
+    background-color: rgba(0,0,0,0.15); /* $ui-black-transparent */
 }
 
 .menu-bar-item.growable {
-    max-width: $menu-bar-item-max-width;
+    max-width: 12rem; /* $menu-bar-item-max-width */
     flex: 1;
 }
 
@@ -100,17 +85,17 @@
 }
 
 .menu-bar-menu {
-    margin-top: $menu-bar-height;
-    z-index: $z-index-menu-bar;
+    margin-top: 3rem;
+    z-index: 491;
 }
 
 .feedback-link {
-    color: $looks-secondary;
+    color: #855CD6;
     text-decoration: none;
 }
 
 .feedback-button {
-    background-color: $ui-white;
+    background-color: #fff;
     height: 34px;
 }
 
@@ -125,11 +110,11 @@
 }
 
 .menu-bar-button {
-    height: $menu-bar-button-size;
+    height: 2rem;
 }
 
 .remix-button {
-    background-color: $pen-primary
+    background-color: #0FBD8C;
 }
 
 .remix-button-icon {
@@ -173,8 +158,8 @@
 
 .profile-icon {
     margin: 0 .25rem;
-    width: $menu-bar-button-size;
-    border-radius: $form-radius;
+    width: 2rem;
+    border-radius: 0.25rem;
 }
 
 .dropdown-caret-icon {
@@ -225,6 +210,22 @@
 
 [dir="rtl"] .collapsible-label {
     margin: 0 0.25rem 0 0.5rem;
+}
+
+.menuBarTextButton {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0 0.5em;
+    font-size: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.menuBarTextButton:hover {
+    text-decoration: underline;
 }
 
 @media only screen and (max-width: 1024px) {

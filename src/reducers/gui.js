@@ -31,6 +31,7 @@ import workspaceMetricsReducer, {workspaceMetricsInitialState} from './workspace
 import throttle from 'redux-throttle';
 
 import decks from '../lib/libraries/decks/index.jsx';
+import chatTabReducer from './chat-tab';
 
 const guiMiddleware = compose(applyMiddleware(throttle(300, {leading: true, trailing: true})));
 
@@ -164,7 +165,8 @@ const guiReducer = combineReducers({
     toolbox: toolboxReducer,
     vm: vmReducer,
     vmStatus: vmStatusReducer,
-    workspaceMetrics: workspaceMetricsReducer
+    workspaceMetrics: workspaceMetricsReducer,
+    chatTab: chatTabReducer
 });
 
 export {
