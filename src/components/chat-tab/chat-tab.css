@@ -1,5 +1,5 @@
 .chatTabContainer {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 320px;
@@ -8,9 +8,10 @@
     border-left: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    z-index: 100;
+    z-index: 10000;
     transition: right 0.2s;
     pointer-events: auto;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.08);
 }
 
 .chatTabContainer.collapsed {
@@ -20,7 +21,7 @@
 .collapseButton {
     position: absolute;
     left: -32px;
-    top: 20px;
+    top: 4px;
     width: 32px;
     height: 40px;
     background: #f5f5f5;
@@ -31,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000001;
+    z-index: 10001;
     font-size: 1.2em;
     color: #333;
     transition: background 0.2s;
@@ -61,7 +62,7 @@
     margin-bottom: 10px;
     padding: 8px 12px;
     border-radius: 8px;
-    background: #e6f0fa;
+    background: #ebe1ff;
     max-width: 80%;
     word-break: break-word;
 }
@@ -69,6 +70,7 @@
 .chatMessage.user {
     background: #d1ffd6;
     align-self: flex-end;
+    margin-left: auto;
 }
 
 .chatInputContainer {
@@ -89,7 +91,7 @@
 .sendButton {
     margin-left: 8px;
     padding: 8px 16px;
-    background: #4a90e2;
+    background: #855cd6;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -98,8 +100,8 @@
     transition: background 0.2s;
 }
 
-.sendButton:active {
-    background: #357ab8;
+.sendButton:hover {
+    background: #714eb6;
 }
 
 /* bodyWrapperやmenu-barのz-indexやpointer-eventsの影響を受けないようにする */

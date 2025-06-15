@@ -30,7 +30,7 @@ import Alerts from '../../containers/alerts.jsx';
 import DragLayer from '../../containers/drag-layer.jsx';
 import ConnectionModal from '../../containers/connection-modal.jsx';
 import TelemetryModal from '../telemetry-modal/telemetry-modal.jsx';
-import ChatTab from '../chat-tab';
+import ChatTabWrapper from '../../containers/chat-tab-wrapper.jsx';
 
 import layout, {STAGE_SIZE_MODES} from '../../lib/layout-constants';
 import {resolveStageSize} from '../../lib/screen-utils';
@@ -370,7 +370,7 @@ const GUIComponent = props => {
                                 />
                             </Box>
                         </Box>
-                        <ChatTab userName={authorUsername || 'User'} />
+                        <ChatTabWrapper workspace={/* TODO: workspace参照を渡す */ undefined} />
                     </Box>
                 </Box>
                 <DragLayer />

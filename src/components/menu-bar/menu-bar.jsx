@@ -854,7 +854,7 @@ class MenuBar extends React.Component {
                         </React.Fragment>
                     )}
                 </div>
-                <div className={styles.menuBarItem}>
+                {/* <div className={styles.menuBarItem}>
                     <button
                         className={styles.menuBarTextButton}
                         onClick={this.props.onToggleChatTab}
@@ -863,7 +863,7 @@ class MenuBar extends React.Component {
                         {this.props.chatTabVisible ? 'チャットを隠す' : 'チャットを表示'}
                     </button>
                 </div>
-                {aboutButton}
+                {aboutButton */}
             </Box>
         );
     }

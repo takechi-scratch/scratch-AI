@@ -105,6 +105,9 @@ class Blocks extends React.Component {
             {rtl: this.props.isRtl, toolbox: this.props.toolboxXML, colours: getColorsForTheme(this.props.theme)}
         );
         this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig);
+        if (this.props.onWorkspaceReady) {
+            this.props.onWorkspaceReady(this.workspace);
+        }
 
         // Register buttons under new callback keys for creating variables,
         // lists, and procedures from extensions.
@@ -645,7 +648,8 @@ Blocks.propTypes = {
     vm: PropTypes.instanceOf(VM).isRequired,
     workspaceMetrics: PropTypes.shape({
         targets: PropTypes.objectOf(PropTypes.object)
-    })
+    }),
+    onWorkspaceReady: PropTypes.func
 };
 
 Blocks.defaultOptions = {
